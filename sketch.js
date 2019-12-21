@@ -12,6 +12,7 @@ var gameState = PLAY
 
 var gameOver, restart, gameOverImage, restartImage;
 
+var dieSound,checkPointSound,jumpSound;
 
 function preload(){
   trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
@@ -30,6 +31,10 @@ function preload(){
   
   gameOverImage = loadImage("gameOver.png");
   restartImage = loadImage("restart.png");
+  
+  jumpSound = loadSound("jump.mp3");
+  checkPointSound = loadSound("checkPoint.mp3");
+  dieSound = loadSound("die.mp3");
 }
 
 function setup() {
