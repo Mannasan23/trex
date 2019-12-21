@@ -59,18 +59,19 @@ function setup() {
   restart.scale = 0.5;
   gameOver.visible = false;
   restart.visible= false;
+  localStorage["HighestScore"] = 0;
 }
 
 function draw() {
   background(180);
   
-  
+  text("Highest Score: "+ localStorage["HighestScore"],350,50);
   text("Score: "+ score, 500,50);
   
   if(gameState == PLAY){
     score = score + Math.round(getFrameRate()/60);
     if(keyDown("space") && trex.y>160) {
-      trex.velocityY = -10;
+      trex.velocityY = -15;
     }
 
     trex.velocityY = trex.velocityY + 0.8
@@ -121,6 +122,11 @@ function reset(){
   cloudsGroup.destroyEach();
   
   trex.changeAnimation("running",trex_running);
+  
+  if(localStorage["HighestScore"]<score){
+    localStorage["HighestScore"] = score;
+  }
+  console.log(localStorage["HighestScore"]);
   
   //to reset the score
   score = 0;
